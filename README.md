@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
 
+# Deployment
+
+https://pokedex-info-app.netlify.app/
+
+# Author
+
+Rubian Camilo Saenz Rodriguez
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
