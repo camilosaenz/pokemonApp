@@ -1,0 +1,8 @@
+.boton {
+  padding: 10px; /*espacio alrededor texto*/
+  width: auto;
+  height: 60px;
+  color: #ffffff; /*color texto*/
+  text-decoration: none; /*decoración texto*/
+  border-radius: 5px;
+}

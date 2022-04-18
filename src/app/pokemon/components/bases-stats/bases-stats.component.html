@@ -1,0 +1,66 @@
+<div
+  class="card bg-color-{{ poke.types[0].type.name + '-light' }}"
+  *ngFor="let poke of pokemon"
+>
+  <strong>Stats:</strong>
+  <hr>
+  <div class="sheet__tab">
+    <div class="w-100 color-black sheet__item_label">HP:</div>
+    <div class="w">
+      <app-color
+        [color]="getType(poke.types)"
+        [value]="poke.stats[5].base_stat"
+      ></app-color>
+    </div>
+  </div>
+
+  <div class="sheet__progress w-100">
+    <div class="w-100 color-black sheet__item_label">Attack:</div>
+    <div class="w">
+      <app-color
+        [color]="getType(poke.types)"
+        [value]="poke.stats[4].base_stat"
+      ></app-color>
+    </div>
+  </div>
+
+  <div class="sheet__progress w-100">
+    <div class="w-100 color-black sheet__item_label">Defense:</div>
+    <div class="w">
+      <app-color
+        [color]="getType(poke.types)"
+        [value]="poke.stats[3].base_stat"
+      ></app-color>
+    </div>
+  </div>
+
+  <div class="sheet__progress w-100">
+    <div class="w-100 color-black sheet__item_label">Sp. Attack:</div>
+    <div class="w">
+      <app-color
+        [color]="getType(poke.types)"
+        [value]="poke.stats[2].base_stat"
+      ></app-color>
+    </div>
+  </div>
+
+  <div class="sheet__progress w-100">
+    <div class="w-100 color-black sheet__item_label">Sp. Defense:</div>
+    <div class="w">
+      <app-color
+        [color]="getType(poke.types)"
+        [value]="poke.stats[1].base_stat"
+      ></app-color>
+    </div>
+  </div>
+
+  <div class="sheet__progress w-100">
+    <div class="w-100 color-black sheet__item_label">Speed:</div>
+    <div class="w">
+      <app-color
+        [color]="getType(poke.types)"
+        [value]="poke.stats[0].base_stat"
+      ></app-color>
+    </div>
+  </div>
+</div>

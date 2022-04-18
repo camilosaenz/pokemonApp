@@ -1,0 +1,218 @@
+<div *ngFor="let poke of pokemon">
+  <div class="container">
+    <div class="row">
+      <div class="name card bg-color-{{ poke.types[0].type.name + '-light' }}">
+        <h1>{{ poke.name | uppercase }} # {{ poke.id }}</h1>
+      </div>
+
+      <!-- Información -->
+
+      <div class="card bg-color-{{ poke.types[0].type.name + '-light' }} col">
+        <div class="row">
+          <div class="col">
+            <div class="card-body">
+              <h2>Height</h2>
+              <h3>{{ change(poke.height) }} m</h3>
+              <h2>Weight</h2>
+              <h3>{{ change(poke.weight) }} kg</h3>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card-body">
+              <h2>Abilities</h2>
+              <div
+                class="col"
+                *ngFor="let abilitie of habilidades; let i = index"
+              >
+                <h3 class="attribute-value">
+                  {{ poke.abilities[i].ability.name | titlecase }}
+                  <button class="btn btn-default">
+                    <i
+                      class="bi bi-question-circle-fill"
+                      (click)="mostrarHabilidad()"
+                      type="checkbox"
+                    >
+                      <div
+                        *ngIf="isShowAbilitie"
+                        class="row container-fluid"
+                        id="divshow"
+                      >
+                        <div>
+                          <h2>{{ abilitie }}</h2>
+                        </div>
+                      </div>
+                    </i>
+                  </button>
+                </h3>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <strong>Types:</strong>
+          <div class="card-text">
+            <div class="type" *ngFor="let type of poke.types">
+              <p
+                class="cajaPokemon bg-color-{{ type.type.name }}"
+                style="background-color: '{{ type.type.name }}';"
+              >
+                {{ type.type.name | titlecase }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col card">
+        <img
+          src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{
+            poke.id
+          }}.png"
+          class="card-img-top"
+        />
+      </div>
+
+      <div class="col card bg-color-{{ poke.types[0].type.name + '-light' }}">
+        <!-- Bases Stats -->
+
+        <app-bases-stats [pokemon]="pokemon"></app-bases-stats>
+
+        <!-- end Bases Stats -->
+      </div>
+    </div>
+
+    <!-- Fortalezas, Debilidades Inmune y Ineficaz -->
+
+    <div class="row">
+      <div
+        class="type card bg-color-{{ poke.types[0].type.name + '-light' }} col"
+        *ngIf="fortalezas.length > 0"
+      >
+        <div class="col">
+          <div class="card-body">
+            <strong>Fortalezas:</strong>
+            <div
+              *ngFor="let tipo of fortalezas"
+              class="type card-text cajaPokemon bg-color-{{ tipo }}"
+              style="background-color: '{{ tipo }}';"
+            >
+              {{ tipo | titlecase }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="type card bg-color-{{ poke.types[0].type.name + '-light' }} col"
+        *ngIf="debilidades.length > 0"
+      >
+        <div class="col">
+          <div class="card-body">
+            <strong>Debilidades:</strong>
+            <div
+              *ngFor="let tipo of debilidades"
+              class="card-text cajaPokemon bg-color-{{ tipo }} col"
+            >
+              {{ tipo | titlecase }}
+              <div *ngFor="let item of tiposEfectivos">
+                <div class="efectivo" *ngIf="item == tipo">
+                  <button class="btn btn-default">
+                    <i
+                      class="bi bi-eye-fill"
+                      (click)="mostrarDebilidad()"
+                      type="checkbox"
+                    >
+                      <div
+                        *ngIf="isShowDebilidad"
+                        class="row container-fluid"
+                        id="divshow"
+                      >
+                        <div class="letter">
+                          <h4>Este tipo hace daño X4</h4>
+                        </div>
+                      </div>
+                    </i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="type card bg-color-{{ poke.types[0].type.name + '-light' }} col"
+        *ngIf="inmune.length > 0"
+      >
+        <div class="col">
+          <div class="card-body">
+            <strong
+              >Inmune:
+              <button class="btn btn-default">
+                <i
+                  class="bi bi-plus-square-fill"
+                  (click)="mostrarInmunidad()"
+                  type="checkbox"
+                >
+                  <div
+                    *ngIf="isShowInmune"
+                    class="row container-fluid"
+                    id="divshow"
+                  >
+                    <div class="letter">
+                      <h4>
+                        {{ poke.name | titlecase }} es inmune a los ataques de
+                        estos tipos.
+                      </h4>
+                    </div>
+                  </div>
+                </i>
+              </button>
+            </strong>
+            <div
+              *ngFor="let tipo of inmune"
+              class="card-text cajaPokemon bg-color-{{ tipo }} col"
+            >
+              {{ tipo | titlecase }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="type card bg-color-{{ poke.types[0].type.name + '-light' }} col"
+        *ngIf="ineficaz.length > 0"
+      >
+        <div class="col">
+          <div class="card-body" *ngIf="ineficaz.length > 0">
+            <strong
+              >Ineficaz:<button class="btn btn-default">
+                <i
+                  class="bi bi-plus-square-fill"
+                  (click)="mostrarIneficaces()"
+                  type="checkbox"
+                >
+                  <div
+                    *ngIf="isShowIneficaz"
+                    class="row container-fluid"
+                    id="divshow"
+                  >
+                    <div class="letter">
+                      <h4>
+                        Los ataques de {{ poke.name | titlecase }} son
+                        ineficaces a los tipos.
+                      </h4>
+                    </div>
+                  </div>
+                </i>
+              </button>
+            </strong>
+            <div
+              *ngFor="let tipo of ineficaz"
+              class="card-text cajaPokemon bg-color-{{ tipo }} col"
+            >
+              {{ tipo | titlecase }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

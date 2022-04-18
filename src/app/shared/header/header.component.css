@@ -1,0 +1,36 @@
+.header {
+  background-color: rgb(56, 54, 54);
+  padding: 5px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  border: 3px solid rgb(0, 0, 0);
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.boton {
+  padding: 10px; /*espacio alrededor texto*/
+  background-color: #2e518b; /*color botón*/
+  width: auto;
+  height: 60px;
+  color: #ffffff; /*color texto*/
+  text-decoration: none; /*decoración texto*/
+  text-transform: uppercase; /*capitalización texto*/
+  font-family: "Helvetica", sans-serif; /*tipografía texto*/
+  border-radius: 5px;
+}
+
+h2 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: white;
+}
+
+button {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+
+img:hover {
+  cursor: pointer;
+}

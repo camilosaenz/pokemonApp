@@ -1,0 +1,16 @@
+<!-- Find -->
+<div class="pokemon">
+  <div class="input">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="termino"
+      placeholder="Pikachu or 25"
+    />
+    <hr />
+  </div>
+
+  <!-- Card -->
+
+  <app-card-pokemon [pokemon]="pokemon" [termino]="termino"></app-card-pokemon>
+</div>

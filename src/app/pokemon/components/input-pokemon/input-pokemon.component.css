@@ -1,0 +1,11 @@
+input {
+  width: 500px;
+  border: 2px solid black;
+}
+
+.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
