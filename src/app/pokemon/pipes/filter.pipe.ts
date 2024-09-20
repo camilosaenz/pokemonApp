@@ -7,15 +7,18 @@ import { Pokemon } from '../interfaces/pokemon.interface';
 export class PipesFilter implements PipeTransform {
   transform(value: Pokemon[], args: any): Pokemon[] {
     const results = [];
+    
     if (args === '') {
       return value;
     }
+    
+    const searchTerm = args.toString().toLowerCase();
+
     for (const poke of value) {
-      // const valor: any;
-      if (poke.name.indexOf(args) > -1) {
+      if (poke.name.toLowerCase().indexOf(searchTerm) > -1) {
         results.push(poke);
       }
-      if (poke.id.toString().indexOf(args) > -1) {
+      if (poke.id.toString().indexOf(searchTerm) > -1) {
         results.push(poke);
       }
     }
