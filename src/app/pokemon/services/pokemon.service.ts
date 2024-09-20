@@ -17,7 +17,7 @@ export class PokemonService {
   constructor(private http: HttpClient) {}
 
   getPokemon(): Observable<Pokedex> {
-    const url = `${this.apiUrl}?limit=898`;
+    const url = `${this.apiUrl}?limit=5000`;
     return this.http.get<Pokedex>(url);
   }
 
